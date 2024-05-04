@@ -2,6 +2,7 @@ import 'package:curso_basico_flutter/background.dart';
 import 'package:curso_basico_flutter/curso_basico.dart';
 import 'package:curso_basico_flutter/dashboard.dart';
 import 'package:curso_basico_flutter/lista_page.dart';
+import 'package:curso_basico_flutter/tarjetas.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -17,7 +18,7 @@ class _HomeState extends State<Home> {
 
   final List<Widget> pages = const [
     BackgroundPage(),
-    Dashboard(),
+    TarjetasPage(),
     CursoBasicoPage()
   ];
 
