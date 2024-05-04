@@ -8,7 +8,7 @@ class PaginaConEstado extends StatefulWidget {
 }
 
 class _PaginaConEstadoState extends State<PaginaConEstado> {
-  var nombre = "Juan Perez";
+  var nombre = " , ";
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class _PaginaConEstadoState extends State<PaginaConEstado> {
           TextFormField(
             decoration: const InputDecoration(
               labelText: "Apellidos",
-              hintText: "Ingrese sus Apllidos",
+              hintText: "Ingrese sus Apellidos",
               icon: Icon(
                 Icons.person,
                 color: Colors.pinkAccent,

@@ -10,8 +10,9 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var ancho = MediaQuery.of(context).size.width;
+    // ignore: unused_local_variable
     var alto = MediaQuery.of(context).size.height;
-    TextStyle style_titles = TextStyle(
+    TextStyle styleTitles = const TextStyle(
         color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold);
 
     return Scaffold(
@@ -37,7 +38,7 @@ class Dashboard extends StatelessWidget {
         ),
         backgroundColor: Colors.white,
       ),
-      body: Container(
+      body:SingleChildScrollView(child: Container(
         padding: const EdgeInsets.all(20),
         child: SingleChildScrollView(
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -76,14 +77,14 @@ class Dashboard extends StatelessWidget {
                                   children: [
                                     Text(
                                       "SI=H-00054157624",
-                                      style: style_titles,
+                                      style: styleTitles,
                                     ),
                                     SizedBox(
                                       width: 10,
                                     ),
                                     Text(
                                       "12.50",
-                                      style: style_titles,
+                                      style: styleTitles,
                                     ),
                                   ],
                                 ),
@@ -281,6 +282,7 @@ class Dashboard extends StatelessWidget {
           ]),
         ),
       ),
+      ), 
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: const Icon(Icons.add),

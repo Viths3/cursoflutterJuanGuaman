@@ -1,40 +1,30 @@
 import 'package:curso_basico_flutter/background.dart';
+import 'package:curso_basico_flutter/curso_basico.dart';
 import 'package:curso_basico_flutter/dashboard.dart';
-import 'package:curso_basico_flutter/pagina_con_estado.dart';
 import 'package:curso_basico_flutter/tarjetas.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
 
-  void _onPressedDashboard(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) {
-        return const Dashboard();
-      },
-    ));
-  }
-  void _onPressedBackground(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) {
-        return const BackgroundPage();
-      },
-    ));
-  }
-  void _onPressedCards(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) {
-        return const TarjetasPage();
-      },
-    ));
-  }
+  @override
+  State<Home> createState() => _HomeState();
+}
 
-  void _onPressedEstados(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) {
-        return const PaginaConEstado();
-      },
-    ));
+class _HomeState extends State<Home> {
+  int _selectedIndex = 0;
+
+  final List<Widget> pages = const [
+    BackgroundPage(),
+    Dashboard(),
+    CursoBasicoPage()
+  ];
+
+  void _onNavigationItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override
@@ -43,94 +33,56 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         title: GestureDetector(
           onTap: () {
-            _onPressedDashboard(context);
+            _onNavigationItemTapped(2); 
           },
-          child: const Center(
-              child: Text(
-            "Curso de Flutter",
-            style: TextStyle(fontStyle: FontStyle.italic),
-          )),
+          child: Center(
+            child: Text(
+              "Curso de Flutter",
+              style: GoogleFonts.poppins(
+                color: Colors.black,
+                fontSize: 20.0,
+              ),
+              textAlign: TextAlign.left,
+            ),
+          ),
         ),
         backgroundColor: Colors.white,
         actions: const [
-          Icon(Icons.person, color: Colors.black12),
           Icon(
             Icons.settings,
-            color: Colors.amber,
-          )
+            color: Colors.black38,
+            size: 33.0,
+          ),
+        ],
+        leading: const Icon(
+          Icons.person,
+          color: Colors.black38,
+          size: 35.0,
+        ),
+      ),
+      body: pages[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onNavigationItemTapped,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.credit_card),
+            label: 'Tarjetas',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Perfil',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Dashboard',
+          ),
         ],
       ),
-      body: Container(
-          color: Colors.white,
-          child: SafeArea(
-              child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  _onPressedDashboard(context);
-                },
-                child: Container(
-                    width: 250.0,
-                    margin: const EdgeInsets.only(bottom: 50.0),
-                    child: const Center(
-                      child: Text("Hola mundo",
-                          style:
-                              TextStyle(color: Colors.white, fontSize: 28.0)),
-                    ),
-                    decoration: const BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                    )),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(bottom: 20.0),
-                child: Text(
-                    "En este curso, estamos aprendiendo Flutter, con los estudiantes de la carrera de software," +
-                        "y estudiantes apacionados con la programación y el desarrollo de aplicaciones",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.black, fontSize: 18.0)),
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  MaterialButton(
-                    onPressed: () {
-                      _onPressedDashboard(context);
-                    },
-                    child: const Text("Dahsboard"),
-                    color: Colors.amber,
-                  ),
-                  const SizedBox(width: 10.0),
-                  MaterialButton(
-                    onPressed: () {
-                      _onPressedEstados(context);
-                    },
-                    child: const Text("Estados"),
-                    color: Colors.amber,
-                  ),
-                  const SizedBox(width: 10.0),
-                  MaterialButton(
-                    onPressed: () {
-                     _onPressedBackground(context);
-                    },
-                    child: const Text("Background"),
-                    color: Colors.amber,
-                  ),
-                  const SizedBox(width: 10.0),
-                  MaterialButton(
-                    onPressed: () {
-                     _onPressedCards(context);
-                    },
-                    child: const Text("Tarjetas"),
-                    color: Colors.amber,
-                  ),
-                ],
-              )
-            ],
-          ))),
     );
   }
 }

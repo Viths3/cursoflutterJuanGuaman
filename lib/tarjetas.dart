@@ -15,7 +15,7 @@ class _TarjetasPageState extends State<TarjetasPage> {
     return Scaffold(
         appBar: AppBar(
           title: Center(
-              child: Text("Tarejetas",
+              child: Text("Tarjetas",
                   style: GoogleFonts.poppins(
                       color: Colors.black, fontSize: 20.0))),
           actions: [
@@ -46,7 +46,7 @@ class _TarjetasPageState extends State<TarjetasPage> {
             Container(
               width: MediaQuery.of(context).size.width,
               padding: EdgeInsets.all(20),
-              height: 150,
+              height: 170,
               decoration: BoxDecoration(
                 color: HexColor("#FF0000"),
                 borderRadius: BorderRadius.circular(10),
@@ -86,7 +86,7 @@ class _TarjetasPageState extends State<TarjetasPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: 100,
+                  width: 160,
                   height: 100,
                   decoration: BoxDecoration(
                     color: HexColor("#FF0000"),
@@ -110,7 +110,7 @@ class _TarjetasPageState extends State<TarjetasPage> {
                   width: 20,
                 ),
                 Container(
-                  width: 100,
+                  width: 160,
                   height: 100,
                   decoration: BoxDecoration(
                     color: HexColor("#FF0000"),
@@ -140,7 +140,7 @@ class _TarjetasPageState extends State<TarjetasPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: 100,
+                  width: 160,
                   height: 100,
                   decoration: BoxDecoration(
                     color: HexColor("#FF0000"),
@@ -164,7 +164,7 @@ class _TarjetasPageState extends State<TarjetasPage> {
                   width: 20,
                 ),
                 Container(
-                  width: 100,
+                  width: 160,
                   height: 100,
                   decoration: BoxDecoration(
                     color: HexColor("#FF0000"),
@@ -190,27 +190,31 @@ class _TarjetasPageState extends State<TarjetasPage> {
               height: 20,
             ),
             Center(
+
               child: Container(
-                width: MediaQuery.of(context).size.width - 200,
-                height: 50,
+                width: MediaQuery.of(context).size.width - 10,
+                height: 80,
                 decoration: BoxDecoration(
                   color: HexColor("#FF0000"),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const Center(
                     child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.location_city, color: Colors.white,),
-                        Text(
-                  "454545",
-                  style: TextStyle(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.location_city,
+                      color: Colors.white,
+                    ),
+                    Text(
+                      "454545",
+                      style: TextStyle(
                         color: Colors.white,
-                  ),
-                ),
-                      ],
-                    )),
+                      ),
+                    ),
+                  ],
+                )),
               ),
             )
           ]),
